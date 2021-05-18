@@ -1,2 +1,3 @@
-const { operacion,saludar } = require('./switch');
-operacion(5,7);
+const { funcion1 } = require('./switch');
+
+console.log(funcion1(5,7)) ;
