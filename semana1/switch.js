@@ -1,30 +1,36 @@
+//helpers
+//hookers
+//librerias
+
 function operacion(n1,n2, operacion="sumar")
 {
     switch(operacion)
     {
         case "sumar":
-            console.log(n1+n2);
+            return n1+n2;
             break;
         case "restar":
-            console.log(n1-n2);
+            return (n1-n2);
             break;
         case "multiplicar":
-            console.log(n1*n2);
+            return (n1*n2);
             break;
         case "dividir":
-            console.log(n1/n2);
+            return (n1/n2);
             break;
         default:
-            console.log(`La operaciOn ${operacion} no se encuentra definida.`);
+            return 0;
     
     }
 
 }
 function saludar(nombre)
 {
-    console.log(`Hola buenos dIas ${nombre}`);
+    return `Hola buenos dIas ${nombre}`;
+    //coerciOn de datos
+
 }
 module.exports= {
-    operacion,
+    funcion1: operacion,
     saludar
 }
