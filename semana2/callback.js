@@ -12,7 +12,7 @@ const libros =[
     {
         id:3,
         titulo:'Clean Code JS',
-        idautor:2
+        idautor:22
     },
 ]
 const autores = [
@@ -35,7 +35,7 @@ function buscarLibroPorId(id, callback){
     {
         const error = new Error();
         error.message="Libro no encontrado";
-        callback(error);
+        return callback(error);
     }
     callback(null, libro);
 }
@@ -56,7 +56,8 @@ buscarLibroPorId(3,
 (err, libro )=>{
     if (err)
     {
-        return console.log(err.message);
+        console.log(err.message);
+        return;
     }
     buscarAutorPorId(libro.idautor , (err,autor)=>{
         if (err)
