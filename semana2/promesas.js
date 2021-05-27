@@ -43,16 +43,30 @@ function buscarLibroPorId(id)
         resolve(libro);
     })
 }
-function buscarAutorPorId(id)
+function buscarAutorPorIdYAsociarAlLibro (libro)
 {
     return new Promise((resolve,reject)=>{
-        const autor =  autores.find((autor)=> autor.id===id)
+        const autor =  autores.find((autor)=> autor.id===libro.idautor)
         if (!autor)
         {
             const error= new Error();
             error.message="Autor no encontrado";
             reject(error);
         }
-        resolve(autor);
+        libro.autor=autor;
+        resolve(libro);
     })
 }
+
+//let libroAuxiliar={};
+
+buscarLibroPorId(212).then((libro)=>{
+    libroAuxiliar=libro;
+    return buscarAutorPorId(libro);
+}).then((libro)=>{
+    //libroAuxiliar.autor= autor;
+    //delete libroAuxiliar.idautor;
+    console.log(libro);
+}).catch((error)=>{
+    console.log(error.message)
+})
