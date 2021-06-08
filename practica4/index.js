@@ -1,28 +1,24 @@
-const fs = require("fs");
-const http = require("http");
+const express = require('express');
+const app = express();
+const PORT = 3000;
 
-const home=  fs.readFileSync("./index.html");
-const about=  fs.readFileSync("./about.html");
+let arreglo = [];
 
-http.createServer((request, response)=>{
-    const { url } = request;
-    if (url==="/")
-    {
-        response.writeHead(200, { "Content-Type":"text/html" });
-        response.write(home)
-    }
-    else if (url==="/about")
-    {
-        response.writeHead(200, { "Content-Type":"text/html" });
-        response.write(about)
-    }
-    else
-    {
-        response.writeHead(404, { "Content-Type":"text/html" });
-        response.write("Ruta no existe");
-    }
-    response.end();
+app.use('/public', express.static(__dirname+'/public') )
+app.use(express.json());
+
+//get
+app.get('/', (req,res)=>{
+    res.status(200).send(arreglo);
 })
-.listen(8080,()=>{
-    console.log(`El servidor esta escuchando por el puerto 8080`)
-});
+//get?id
+
+//post
+
+//put
+
+//delete
+
+app.listen(PORT, ()=>{
+    console.log(`El servidor esta ejecutandose en el puerto ${PORT}`)
+})
