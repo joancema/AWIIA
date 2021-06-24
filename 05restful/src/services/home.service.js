@@ -2,8 +2,8 @@ class HomeService
 {
     index()
     {
-        return 
-        {
+
+        return {
             message:"Hola servicio"
         }
     }

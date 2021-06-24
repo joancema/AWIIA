@@ -1,8 +1,14 @@
+//core
 const express = require('express');
-const cors = require('cors');
-const  helmet = require('helmet');
+//terceros
 const compression = require('compression')
+const cors = require('cors');
 require('express-async-errors');
+const  helmet = require('helmet');
+//propios
+const { NoFoundMiddleware, ErrorMiddleware }  = require('../middlewares');
+
+
 
 module.exports =  function({HomeRoutes }){
     //nivel1
@@ -21,6 +27,13 @@ module.exports =  function({HomeRoutes }){
 
      apiRoutes.use('/home', HomeRoutes );
      router.use("/v1/api", apiRoutes);
+
+        ///middewares lOgicos
+
+        router.use(NoFoundMiddleware);
+        router.use(ErrorMiddleware);
+
+
     return router;
 
     //localhost:5000/v1/api/home/mostrarMEnsaje
