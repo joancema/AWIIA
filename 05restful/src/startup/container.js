@@ -4,7 +4,8 @@ const { createContainer, asClass, asValue, asFunction } = require('awilix');
 const config = require("../config");
 
 //importar servicios
-const { HomeService } = require("../services");
+const { HomeService, UserService } = require("../services");
+
 //importar controladores
 const { HomeController } =  require("../controllers")
 
@@ -16,6 +17,9 @@ const Routes = require("../routes");
 
 const { User } = require('../models')
 
+//importar repositorios
+
+const { UserRepository }  = require('../repositories');
 
 const app = require('.');
 
@@ -31,7 +35,8 @@ container
 )
 .register(
     {
-        HomeService: asClass(HomeService).singleton()
+        HomeService: asClass(HomeService).singleton(),
+        UserService: asClass(UserService).singleton()
     }
 )
 .register(
@@ -45,6 +50,11 @@ container
 .register(
     {
         User: asValue(User)
+    }
+)
+.register(
+    {
+        UserRepository: asClass(UserRepository).singleton()
     }
 )
 
