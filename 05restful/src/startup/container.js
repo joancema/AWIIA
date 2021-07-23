@@ -7,10 +7,10 @@ const config = require("../config");
 const { HomeService, UserService } = require("../services");
 
 //importar controladores
-const { HomeController } =  require("../controllers")
+const { HomeController, UserController } =  require("../controllers")
 
 //importar rutas
-const { HomeRoutes  } = require("../routes/index.routes")
+const { HomeRoutes, UserRoutes  } = require("../routes/index.routes")
 const Routes = require("../routes");
 
 // importar modelos
@@ -41,11 +41,13 @@ container
 )
 .register(
     {
-        HomeController: asClass(HomeController.bind(HomeController) ).singleton()
+        HomeController: asClass(HomeController.bind(HomeController) ).singleton(),
+        UserController: asClass(UserController.bind(UserController) ).singleton()
     }
 )
 .register({
-    HomeRoutes: asFunction(HomeRoutes).singleton()
+    HomeRoutes: asFunction(HomeRoutes).singleton(),
+    UserRoutes: asFunction(UserRoutes).singleton()
 })
 .register(
     {

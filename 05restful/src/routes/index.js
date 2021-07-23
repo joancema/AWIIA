@@ -10,7 +10,7 @@ const { NoFoundMiddleware, ErrorMiddleware }  = require('../middlewares');
 
 
 
-module.exports =  function({HomeRoutes }){
+module.exports =  function({HomeRoutes, UserRoutes }){
     //nivel1
     //v1/api
     //v2/api
@@ -26,6 +26,10 @@ module.exports =  function({HomeRoutes }){
      .use(compression())
 
      apiRoutes.use('/home', HomeRoutes );
+     apiRoutes.use('/user', UserRoutes );
+
+
+
      router.use("/v1/api", apiRoutes);
 
         ///middewares lOgicos
