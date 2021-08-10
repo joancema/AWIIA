@@ -31,6 +31,7 @@ module.exports =  function({HomeRoutes, UserRoutes }){
 
 
      router.use("/v1/api", apiRoutes);
+     router.use("/public", express.static('public'));
 
         ///middewares lOgicos
 
